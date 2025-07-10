@@ -39,8 +39,11 @@ spec:
               uninstall: false
             ipam:
               mode: {{ .Values.components.cilium.ipamMode }}
+            eni:
+              enabled: {{ if eq .Values.components.cilium.ipamMode "eni" }} 
             enableIPv4Masquerade: {{ default false .Values.components.cilium.enableIPv4Masquerade }}
             enableIPv6Masquerade: {{ default false .Values.components.cilium.enableIPv6Masquerade }}
+
 
             # cilium-agent
             image: {{ default "{}" (include "cilium.image" .) | nindent 14 }}
