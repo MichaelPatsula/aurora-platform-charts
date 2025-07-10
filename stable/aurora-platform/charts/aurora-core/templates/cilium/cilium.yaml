@@ -40,7 +40,8 @@ spec:
             ipam:
               mode: {{ .Values.components.cilium.ipamMode }}
             eni:
-              enabled: {{ if eq .Values.components.cilium.ipamMode "eni" }} 
+              enabled: true
+              # {{ if eq .Values.components.cilium.ipamMode "eni" }} 
             enableIPv4Masquerade: {{ default false .Values.components.cilium.enableIPv4Masquerade }}
             enableIPv6Masquerade: {{ default false .Values.components.cilium.enableIPv6Masquerade }}
 
