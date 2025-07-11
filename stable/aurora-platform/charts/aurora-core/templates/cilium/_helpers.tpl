@@ -2,7 +2,7 @@
 image pull secret
 */}}
 {{- define "cilium.imagePullSecrets" -}}
-{{- if eq .Values.components.cilium.secretDockerConfigJson "" }}
+{{- if not .Values.components.cilium.secretDockerConfigJson }}
 {{- .Values.components.cilium.imagePullSecrets }}
 {{- else }}
 {{- append .Values.components.cilium.imagePullSecrets "cilium-image-pull-secret" | uniq }}
