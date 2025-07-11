@@ -455,18 +455,25 @@ components:
     helm: {}
       # chart: cilium
       # repository: https://helm.cilium.io
-      # targetRevision: 1.14.1
-
-    imagePullSecrets:
-      - name: cilium-image-pull-secret
+      # targetRevision: 1.14.1   
 
     ipamMode: "kubernetes"  
+
+    eni:
+      awsReleaseExcessIPs: false
+      awsEnablePrefixDelegation: false
+      subnetIDsFilter: []
+      subnetTagsFilter: []
 
     enableIPv4Masquerade: false
     enableIPv6Masquerade: false
 
     bgpControlPlane:
       enabled: true
+
+    imagePullSecrets: []
+    # If secretDockerConfigJson is set, it will be used for imagePullSecrets
+    # secretDockerConfigJson: ""
 
     image:
       # registry: docker.io
@@ -553,8 +560,6 @@ components:
             labelSelector:
               matchLabels:
                 app.kubernetes.io/name: cilium-operator
-
-    # secretDockerConfigJson: ""
 
     ciliumBGPPeeringPolicy:
       nodeSelector:
