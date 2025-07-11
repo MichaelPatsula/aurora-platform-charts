@@ -43,10 +43,9 @@ spec:
                     solvers:
                     - dns01:
                         cnameStrategy: Follow
-                        azureDNS:
-                          hostedZoneName: {{ required "certManager.issuers.dns01.azure.zone is required" .Values.components.certManager.issuers.dns01.azure.zone }}
-                          resourceGroupName: {{ required "certManager.issuers.dns01.azure.resourceGroupName is required" .Values.components.certManager.issuers.dns01.azure.resourceGroupName }}
-                          subscriptionID: {{ required "certManager.issuers.dns01.azure.subscriptionId is required" .Values.components.certManager.issuers.dns01.azure.subscriptionId }}
+                        route53:
+                          hostedZoneID: "/hostedzone/Z0483333R3YRGDOFP45N"
+                          region: "ca-central-1"
                       selector:
                         matchLabels:
                           use-azuredns-solver: "true"
@@ -74,10 +73,9 @@ spec:
                     solvers:
                     - dns01:
                         cnameStrategy: Follow
-                        azureDNS:
-                          hostedZoneName: {{ required "certManager.issuers.dns01.azure.zone is required" .Values.components.certManager.issuers.dns01.azure.zone }}
-                          resourceGroupName: {{ required "certManager.issuers.dns01.azure.resourceGroupName is required" .Values.components.certManager.issuers.dns01.azure.resourceGroupName }}
-                          subscriptionID: {{ required "certManager.issuers.dns01.azure.subscriptionId is required" .Values.components.certManager.issuers.dns01.azure.subscriptionId }}
+                        route53:
+                          hostedZoneID: "/hostedzone/Z0483333R3YRGDOFP45N"
+                          region: "ca-central-1"
                       selector:
                         matchLabels:
                           use-azuredns-solver: "true"
