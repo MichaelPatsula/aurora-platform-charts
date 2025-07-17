@@ -51,19 +51,33 @@ spec:
             configuration:
               backupStorageLocation:
               - name: {{ .Values.global.cluster }}
-                provider: azure
+                provider: aws
                 default: true
                 bucket: {{ required "velero.backupStorage.bucket is required" .Values.components.velero.backupStorage.bucket | quote }}
                 config:
-                  resourceGroup: {{ required "velero.backupStorage.resourceGroupName is required" .Values.components.velero.backupStorage.resourceGroupName | quote }}
-                  storageAccount: {{ required "velero.backupStorage.storageAccountName is required" .Values.components.velero.backupStorage.storageAccountName | quote }}
-                  subscriptionId: {{ required "velero.backupStorage.subscriptionId is required" .Values.components.velero.backupStorage.subscriptionId | quote }}
+                  region: ca-central-1
               volumeSnapshotLocation:
               - name: {{ .Values.global.cluster }}
-                provider: azure
+                provider: aws
                 config:
-                  resourceGroup: {{ required "velero.volumeSnapshot.resourceGroupName is required" .Values.components.velero.volumeSnapshot.resourceGroupName | quote }}
-                  incremental: true
+                  region: ca-central-1
+
+            # configuration:
+            #   backupStorageLocation:
+            #   - name: {{ .Values.global.cluster }}
+            #     provider: azure
+            #     default: true
+            #     bucket: {{ required "velero.backupStorage.bucket is required" .Values.components.velero.backupStorage.bucket | quote }}
+            #     config:
+            #       resourceGroup: {{ required "velero.backupStorage.resourceGroupName is required" .Values.components.velero.backupStorage.resourceGroupName | quote }}
+            #       storageAccount: {{ required "velero.backupStorage.storageAccountName is required" .Values.components.velero.backupStorage.storageAccountName | quote }}
+            #       subscriptionId: {{ required "velero.backupStorage.subscriptionId is required" .Values.components.velero.backupStorage.subscriptionId | quote }}
+            #   volumeSnapshotLocation:
+            #   - name: {{ .Values.global.cluster }}
+            #     provider: azure
+            #     config:
+            #       resourceGroup: {{ required "velero.volumeSnapshot.resourceGroupName is required" .Values.components.velero.volumeSnapshot.resourceGroupName | quote }}
+            #       incremental: true
 
             credentials:
               secretContents:
