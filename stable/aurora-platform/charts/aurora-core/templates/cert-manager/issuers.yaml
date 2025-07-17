@@ -43,9 +43,7 @@ spec:
                     solvers:
                     - dns01:
                         cnameStrategy: Follow
-                        route53:
-                          hostedZoneID: "/hostedzone/Z0483333R3YRGDOFP45N"
-                          region: "ca-central-1"
+                        route53: {}
                       selector:
                         matchLabels:
                           use-azuredns-solver: "true"
@@ -73,9 +71,7 @@ spec:
                     solvers:
                     - dns01:
                         cnameStrategy: Follow
-                        route53:
-                          hostedZoneID: "/hostedzone/Z0483333R3YRGDOFP45N"
-                          region: "ca-central-1"
+                        route53: {}
                       selector:
                         matchLabels:
                           use-azuredns-solver: "true"
