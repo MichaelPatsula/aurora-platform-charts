@@ -1846,6 +1846,7 @@ components:
       # resourceGroupName:
 
     aadPodIdentity:
+      enabled: true
       name: velero
       azureManagedIdentity: {}
         # clientId: ""
