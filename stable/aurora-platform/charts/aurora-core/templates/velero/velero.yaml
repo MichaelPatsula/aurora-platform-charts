@@ -62,32 +62,6 @@ spec:
                 config:
                   region: ca-central-1
 
-            # configuration:
-            #   backupStorageLocation:
-            #   - name: {{ .Values.global.cluster }}
-            #     provider: azure
-            #     default: true
-            #     bucket: {{ required "velero.backupStorage.bucket is required" .Values.components.velero.backupStorage.bucket | quote }}
-            #     config:
-            #       resourceGroup: {{ required "velero.backupStorage.resourceGroupName is required" .Values.components.velero.backupStorage.resourceGroupName | quote }}
-            #       storageAccount: {{ required "velero.backupStorage.storageAccountName is required" .Values.components.velero.backupStorage.storageAccountName | quote }}
-            #       subscriptionId: {{ required "velero.backupStorage.subscriptionId is required" .Values.components.velero.backupStorage.subscriptionId | quote }}
-            #   volumeSnapshotLocation:
-            #   - name: {{ .Values.global.cluster }}
-            #     provider: azure
-            #     config:
-            #       resourceGroup: {{ required "velero.volumeSnapshot.resourceGroupName is required" .Values.components.velero.volumeSnapshot.resourceGroupName | quote }}
-            #       incremental: true
-
-            credentials:
-              secretContents:
-                cloud: |
-                  AZURE_CLIENT_ID:
-                  AZURE_CLIENT_SECRET:
-                  AZURE_TENANT_ID: {{ .Values.global.tenantId }}
-                  AZURE_SUBSCRIPTION_ID: {{ .Values.global.subscriptionId }}
-                  AZURE_RESOURCE_GROUP: {{ printf "%s-rg-managed-aks" .Values.global.cluster }}
-
             schedules:
               hourly-resources:
                 schedule: "0 * * * *"
