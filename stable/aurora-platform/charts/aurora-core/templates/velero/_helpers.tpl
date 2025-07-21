@@ -47,17 +47,15 @@ The image section for velero plugin azure.
 {{- end }}
 
 
-{{- define "mychart.myFunction" -}}
-  # Your templating logic goes here
-  # You can access the context passed to the template using '.'
-  key: value
-  anotherKey: {{ .someValue }}
-{{- end -}}
-
+{{/*
+The image section for velero plugin azure.
+*/}}
 {{- define "velero.imageFunction" -}}
 {{- if (and .image.registry .image.repository .image.tag) }}
 {{- printf "%s/%s:%s" .image.registry .image.repository .image.tag }}
-{{- else if (and .image.repository .image.tag) }}
+{{- else if (and $.Values.global.container.registry .image.repository .image.tag) }}
 {{- printf "%s/%s:%s" (default "docker.io" $.Values.global.container.registry) .image.repository .image.tag }}
+{{- else if (and .image.repository .image.tag) }}
+{{- printf "%s/%s:%s" "docker.io" .image.repository .image.tag }}
 {{- end }}
 {{- end -}}
