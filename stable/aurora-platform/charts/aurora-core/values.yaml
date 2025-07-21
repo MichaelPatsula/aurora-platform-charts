@@ -1852,7 +1852,7 @@ components:
         # clientId: ""
         # resourceId: ""
 
-    plugin:
+    plugins:
       azure:
         image:
           # registry: docker.io
