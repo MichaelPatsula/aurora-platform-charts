@@ -48,14 +48,13 @@ The image section for velero plugin azure.
 
 
 {{/*
-The image section for velero plugin azure.
+The image section for velero plugins.
 */}}
 {{- define "velero.imageFunction" -}}
 {{- if (and .image.registry .image.repository .image.tag) }}
 {{- printf "%s/%s:%s" .image.registry .image.repository .image.tag }}
-{{- else if (and $.Values.global.container .image.repository .image.tag) }}
-{{- printf "%s/%s:%s" (default "docker.io" $.Values.global.container.registry) .image.repository .image.tag }}
 {{- else if (and .image.repository .image.tag) }}
 {{- printf "%s/%s:%s" "docker.io" .image.repository .image.tag }}
 {{- end }}
-{{- end -}}
+{{- end }}
+
