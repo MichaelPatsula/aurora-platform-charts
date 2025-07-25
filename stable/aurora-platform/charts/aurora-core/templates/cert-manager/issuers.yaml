@@ -43,7 +43,8 @@ spec:
                     solvers:
                     - dns01:
                         cnameStrategy: Follow
-                        route53: {}
+                        route53:
+                          region: ca-central-1
                       selector:
                         matchLabels:
                           use-azuredns-solver: "true"
@@ -71,7 +72,8 @@ spec:
                     solvers:
                     - dns01:
                         cnameStrategy: Follow
-                        route53: {}
+                        route53:
+                          region: ca-central-1
                       selector:
                         matchLabels:
                           use-azuredns-solver: "true"
