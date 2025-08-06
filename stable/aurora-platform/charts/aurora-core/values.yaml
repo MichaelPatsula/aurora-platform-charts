@@ -346,7 +346,7 @@ components:
     startupapicheck:
       image:
         # registry: quay.io
-        repository: jetstack/cert-manager-ctl
+        repository: jetstack/cert-manager-startupapicheck
         # tag: "v1.6.1"
         # pullPolicy: IfNotPresent
 
