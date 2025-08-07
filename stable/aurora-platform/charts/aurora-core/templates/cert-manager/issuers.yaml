@@ -41,7 +41,7 @@ spec:
                     caBundle: {{ .Values.components.certManager.issuers.caBundle }}
                     {{ end }}
                     solvers:
-                    - dns01: {{ toyaml .Values.components.certManager.issuers.dns01 | nindent 22 }}
+                    - dns01: {{ toYaml .Values.components.certManager.issuers.dns01 | nindent 22 }}
               - apiVersion: cert-manager.io/v1
                 kind: ClusterIssuer
                 metadata:
@@ -64,7 +64,7 @@ spec:
                     caBundle: {{ .Values.components.certManager.issuers.caBundle }}
                     {{ end }}
                     solvers:
-                    - dns01: {{ toyaml .Values.components.certManager.issuers.dns01 | nindent 22 }}
+                    - dns01: {{ toYaml .Values.components.certManager.issuers.dns01 | nindent 22 }}
   destination:
     name: {{ .Values.global.cluster }}
     namespace: platform-system
