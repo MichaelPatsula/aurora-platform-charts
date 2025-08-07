@@ -41,13 +41,7 @@ spec:
                     caBundle: {{ .Values.components.certManager.issuers.caBundle }}
                     {{ end }}
                     solvers:
-                    - dns01:
-                        cnameStrategy: Follow
-                        route53:
-                          region: ca-central-1
-                      selector:
-                        matchLabels:
-                          use-azuredns-solver: "true"
+                    - dns01: {{ toyaml .Values.components.certManager.issuers.dns01 | nindent 22 }}
               - apiVersion: cert-manager.io/v1
                 kind: ClusterIssuer
                 metadata:
@@ -70,14 +64,7 @@ spec:
                     caBundle: {{ .Values.components.certManager.issuers.caBundle }}
                     {{ end }}
                     solvers:
-                    - dns01:
-                        cnameStrategy: Follow
-                        route53:
-                          region: ca-central-1
-                      selector:
-                        matchLabels:
-                          use-azuredns-solver: "true"
-
+                    - dns01: {{ toyaml .Values.components.certManager.issuers.dns01 | nindent 22 }}
   destination:
     name: {{ .Values.global.cluster }}
     namespace: platform-system
