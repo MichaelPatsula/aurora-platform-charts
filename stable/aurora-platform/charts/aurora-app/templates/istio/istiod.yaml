@@ -19,8 +19,6 @@ spec:
     helm:
       releaseName: istiod
       values: |
-        replicaCount: {{ .Values.components.istio.istiod.pilot.replicas }}
-
         pilot:
           {{- default "{}" (include "istiod.pilot.image" .) | nindent 10 }}
           replicaCount: {{ .Values.components.istio.istiod.pilot.replicas }}
@@ -29,8 +27,8 @@ spec:
           tolerations: {{ toYaml .Values.components.istio.istiod.pilot.tolerations | nindent 12 }}
           affinity: {{ toYaml .Values.components.istio.istiod.pilot.affinity | nindent 12 }}
           autoscaleEnabled: true
-          autoscaleMin: 2
-          autoscaleMax: 5
+          autoscaleMin: {{ .Values.components.istio.istiod.pilot.autoscaleMin }}
+          autoscaleMax: {{ .Values.components.istio.istiod.pilot.autoscaleMax }}
           enableProtocolSniffingForInbound: false
           enableProtocolSniffingForOutbound: false
           env:
