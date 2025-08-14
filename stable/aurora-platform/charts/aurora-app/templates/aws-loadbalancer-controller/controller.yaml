@@ -30,18 +30,16 @@ spec:
             priorityClassName: system-cluster-critical # {{ .Values.components.awsLoadbalancerController.priorityClassName }}
             nodeSelector: {{ toYaml .Values.components.awsLoadbalancerController.nodeSelector | nindent 14 }}
             tolerations: {{ toYaml .Values.components.awsLoadbalancerController.tolerations | nindent 14 }}
-            configureDefaultAffinity: true
-            # affinity: {{ toYaml .Values.components.awsLoadbalancerController.affinity | nindent 14 }}             
+            configureDefaultAffinity: true        
 
             clusterName: {{ .Values.global.cluster }}
 
             serviceAccount:
               name: "aws-load-balancer-controller"
 
-            enableCertManager: false
-
+            enableCertManager: {{ .Values.components.awsLoadbalancerController.enableCertManager }}
             serviceMonitor:
-              enabled: true 
+              enabled: {{ .Values.components.awsLoadbalancerController.enableServiceMinitor }} 
 
   destination:
     name: {{ .Values.global.cluster }}
