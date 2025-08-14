@@ -236,18 +236,7 @@ components:
     tolerations:
       - key: CriticalAddonsOnly
         operator: Exists
-    affinity:
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          podAffinityTerm:
-            labelSelector:
-              matchExpressions:
-              - key: app.kubernetes.io/name
-                operator: In
-                values:
-                - {{ include "aws-load-balancer-controller.name" . }}
-            topologyKey: kubernetes.io/hostname
+    # affinity: {}
 
     priorityClassName: platform-cluster-medium
 
