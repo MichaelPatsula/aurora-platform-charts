@@ -30,7 +30,7 @@ spec:
             priorityClassName: system-cluster-critical # {{ .Values.components.awsLoadbalancerController.priorityClassName }}
             nodeSelector: {{ toYaml .Values.components.awsLoadbalancerController.nodeSelector | nindent 14 }}
             tolerations: {{ toYaml .Values.components.awsLoadbalancerController.tolerations | nindent 14 }}
-            configureDefaultAffinity: true        
+            configureDefaultAffinity: true
 
             clusterName: {{ .Values.global.cluster }}
 
