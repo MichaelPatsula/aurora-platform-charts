@@ -2,11 +2,14 @@ dependencies:
 - name: aurora-core
   repository: ""
   version: 0.0.1
+- name: aurora-core-aws
+  repository: ""
+  version: 0.0.1
 - name: aurora-app
   repository: ""
   version: 0.0.1
 - name: aurora-mgmt
   repository: ""
   version: 0.0.1
-digest: sha256:8f7c21edd4e41460042021f940cac68e131c2e9af9005603b0f3dee4e3276e01
-generated: "2025-07-08T23:13:31.8753822-04:00"
+digest: sha256:22cf999b3ef88d3b598254db6d50dc0dae03aa15d80b080f7e60536b613989ca
+generated: "2025-08-18T13:36:37.6985502-04:00"
