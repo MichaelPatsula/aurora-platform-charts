@@ -76,7 +76,7 @@ global:
 
 # Core Platform components
 core:
-  enabled: false
+  enabled: true
   components: {}
     # auroraController: {}
     # aadPodIdentity: {}
