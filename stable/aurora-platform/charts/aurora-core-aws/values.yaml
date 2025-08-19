@@ -65,7 +65,7 @@ rbac:
   platformOperator:
     groups: []
     users: []
-    
+
 # Components
 components:
   awsEbsCsiDriver:
@@ -75,6 +75,12 @@ components:
       # chart: aws-ebs-csi-driver
       # repository: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
       # targetRevision: 2.47.0
+
+    image:
+      # registry: public.ecr.aws  
+      repository: ebs-csi-driver/aws-ebs-csi-driver
+      # tag: ""
+      # pullPolicy: IfNotPresent
 
     controller:
       replicas: 2
