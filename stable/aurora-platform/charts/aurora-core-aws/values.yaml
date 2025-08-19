@@ -50,10 +50,6 @@ global:
   # Load Balancer Subnet Name for all Load Balancers
   # load_balancer_subnet_name: ""
 
-data:
-  coreAws:
-    enabled: true
-
 # Components
 components:
   awsEbsCsiDriver:
@@ -129,7 +125,7 @@ components:
       resources: {}
 
   awsLoadbalancerController:
-    enabled: false
+    enabled: true
 
     helm: {}
       # chart: aws-load-balancer-controller
