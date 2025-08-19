@@ -72,7 +72,17 @@ spec:
                 resources: {{ toYaml .Values.components.awsEbsCsiDriver.nodeDriverRegistrar.resources | nindent 18 }}
               volumemodifier:
                 image: {{ default "{}" (include "awsEbsCsiDriver.volumemodifier.image" .) | nindent 18 }}
-                resources: {{ toYaml .Values.components.awsEbsCsiDriver.volumemodifier.resources | nindent 18 }}    
+                resources: {{ toYaml .Values.components.awsEbsCsiDriver.volumemodifier.resources | nindent 18 }}
+            
+            storageClasses:
+              - name: gp3-default
+                annotations:
+                  storageclass.kubernetes.io/is-default-class: "true"
+                volumeBindingMode: WaitForFirstConsumer
+                reclaimPolicy: Delete
+                parameters:
+                  type: gp3
+                  encrypted: "true"
 
   destination:
     name: {{ .Values.global.cluster }}
