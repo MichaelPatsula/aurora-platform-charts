@@ -40,8 +40,11 @@ spec:
                     {{ if .Values.components.certManager.issuers.caBundle }}
                     caBundle: {{ .Values.components.certManager.issuers.caBundle }}
                     {{ end }}
-                    solvers:                    
-                    - dns01: {{ include "certManager.issuer.dns01Solver" . | nindent 24 }}                  
+                    solvers:
+                    - dns01: {{ toYaml .Values.components.certManager.issuers.dns01Solver | nindent 24 }}
+                      selector:
+                        matchLabels:
+                          use-general-solver: "true"                    
               - apiVersion: cert-manager.io/v1
                 kind: ClusterIssuer
                 metadata:
@@ -64,7 +67,10 @@ spec:
                     caBundle: {{ .Values.components.certManager.issuers.caBundle }}
                     {{ end }}
                     solvers:
-                    - dns01: {{  include "certManager.issuer.dns01Solver" . | nindent 24 }}
+                    - dns01: {{ toYaml .Values.components.certManager.issuers.dns01Solver | nindent 24 }}
+                      selector:
+                        matchLabels:
+                          use-general-solver: "true"                    
   destination:
     name: {{ .Values.global.cluster }}
     namespace: platform-system

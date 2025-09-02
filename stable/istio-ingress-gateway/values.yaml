@@ -59,7 +59,7 @@ https:
     # Note: The first entry is set as the common name.
     dnsNames: []
     # Toggles if the Azure DNS solver should be used.
-    useAzureDNSSolver: true
+    useGeneralDNSSolver: true
     # Defines the type of Issuer to use.
     issuerRef:
       # Can be ClusterIssuer or Issuer.
