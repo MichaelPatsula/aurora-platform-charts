@@ -465,7 +465,7 @@ components:
 
     eni:
       awsReleaseExcessIPs: false
-      awsEnablePrefixDelegation: false
+      awsEnablePrefixDelegation: true
       subnetIDsFilter: []
       subnetTagsFilter: []
 

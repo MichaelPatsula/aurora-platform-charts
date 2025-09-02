@@ -142,7 +142,7 @@ repository: {{ printf "%s/%s" (default "quay.io" .Values.global.container.regist
 {{/*
 The image section for Cilium PreFlight.
 */}}
-{{- define "cilium.ipamMode" -}}
+{{- define "cilium.ipam" -}}
 {{- if .Values.global.provider.azure }}
 ipam:
   mode: kubernetes
