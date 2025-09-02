@@ -25,9 +25,6 @@ spec:
             aksbyocni:
               enabled: false
 
-            bgp:
-              # Should only be enabled if bgpControlPlane = false
-              enabled: false
             bgpControlPlane:
               enabled: {{ .Values.components.cilium.bgpControlPlane.enabled }}
 
