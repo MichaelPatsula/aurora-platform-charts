@@ -29,9 +29,9 @@ global:
       targetRevision: "0.0.1"
       repository: "https://gccloudone-aurora.github.io/aurora-platform-charts"
 
-  provider:
-    azure: true
-    aws: false
+  # azure or aws
+  provider: azure 
+
 
   # Cluster name for the Application targets.
   cluster: in-cluster

@@ -87,13 +87,13 @@ pullPolicy: {{ .Values.components.certManager.startupapicheck.image.pullPolicy }
 The image section for Cert Manager Startup API Check.
 */}}
 {{- define "certManager.issuer.dns01Solver" -}}
-{{- if .Values.global.provider.azure }}
+{{- if eq .Values.global.provider "azure" }}
 cnameStrategy: Follow
 azureDNS:
     hostedZoneName: {{ required "certManager.issuers.dns01.azure.zone is required" .Values.components.certManager.issuers.dns01.azure.zone }}
     resourceGroupName: {{ required "certManager.issuers.dns01.azure.resourceGroupName is required" .Values.components.certManager.issuers.dns01.azure.resourceGroupName }}
     subscriptionID: {{ required "certManager.issuers.dns01.azure.subscriptionId is required" .Values.components.certManager.issuers.dns01.azure.subscriptionId }} 
-{{- else if .Values.global.provider.aws }}
+{{- else if eq .Values.global.provider "aws" }}
 cnameStrategy: Follow
 route53: {}
 {{- end }}
