@@ -1,4 +1,4 @@
-{{ if and .Values.components.certManager.enabled .Values.components.certManager.aadPodIdentity.enabled -}}
+{{ if and .Values.components.certManager.enabled .Values.global.provider.azure -}}
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application

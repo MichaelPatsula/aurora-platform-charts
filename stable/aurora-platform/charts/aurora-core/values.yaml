@@ -380,7 +380,6 @@ components:
       nameservers: []
 
     aadPodIdentity:
-      enabled: true
       name: cert-manager
       azureManagedIdentity: {}
         # clientId: ""
