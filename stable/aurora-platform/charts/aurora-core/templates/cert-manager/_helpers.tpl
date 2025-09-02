@@ -83,8 +83,6 @@ pullPolicy: {{ .Values.components.certManager.startupapicheck.image.pullPolicy }
 {{- end }}
 {{- end }}
 
-
-
 {{/*
 The image section for Cert Manager Startup API Check.
 */}}

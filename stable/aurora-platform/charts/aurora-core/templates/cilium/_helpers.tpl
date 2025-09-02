@@ -146,7 +146,7 @@ The image section for Cilium PreFlight.
 {{- if .Values.global.provider.azure }}
 ipam:
   mode: kubernetes
-{{- elif .Values.global.provider.aws }}
+{{- else if .Values.global.provider.aws }}
 ipam:
   mode: eni
 

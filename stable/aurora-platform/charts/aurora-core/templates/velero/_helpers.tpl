@@ -64,14 +64,14 @@ The image section for velero plugins.
 
 
 {{/*
-backupStorageLocation configg
+backupStorageLocation config
 */}}
 {{- define "velero.backupStorageLocation.config" -}}
 {{- if .Values.global.provider.azure }}
 resourceGroup: {{ required "velero.backupStorage.resourceGroupName is required" .Values.components.velero.backupStorage.resourceGroupName | quote }}
 storageAccount: {{ required "velero.backupStorage.storageAccountName is required" .Values.components.velero.backupStorage.storageAccountName | quote }}
 subscriptionId: {{ required "velero.backupStorage.subscriptionId is required" .Values.components.velero.backupStorage.subscriptionId | quote }}
-{{- elif .Values.global.provider.aws }}
+{{- else if .Values.global.provider.aws }}
 region: ca-central-1
 {{- end }}
 {{- end }}
@@ -83,7 +83,7 @@ snapshotLocation config
 {{- if .Values.global.provider.azure }}
 resourceGroup: {{ required "velero.volumeSnapshot.resourceGroupName is required" .Values.components.velero.volumeSnapshot.resourceGroupName | quote }}
 incremental: true
-{{- elif .Values.global.provider.aws }}
+{{- else if .Values.global.provider.aws }}
 region: ca-central-1
 {{- end }}
 {{- end }}
