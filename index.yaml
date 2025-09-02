@@ -2479,6 +2479,20 @@ entries:
     version: 0.0.1
   istio-ingress-gateway:
   - apiVersion: v2
+    created: "2025-09-02T22:50:27.236296043Z"
+    dependencies:
+    - condition: gateway.enabled
+      name: gateway
+      repository: https://istio-release.storage.googleapis.com/charts
+      version: 1.14.3
+    description: This chart deploys an opinionated Istio Ingress Gateway.
+    digest: 9b095591f9b7c64ca5a84ae2ad57a194151be5f2d3e38223be29963953214fcf
+    name: istio-ingress-gateway
+    type: application
+    urls:
+    - https://github.com/MichaelPatsula/aurora-platform-charts/releases/download/istio-ingress-gateway-0.0.3/istio-ingress-gateway-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     created: "2025-02-28T20:06:29.436077036Z"
     dependencies:
     - condition: gateway.enabled
@@ -2514,4 +2528,4 @@ entries:
     urls:
     - https://github.com/gccloudone-aurora/aurora-platform-charts/releases/download/raw-0.0.1/raw-0.0.1.tgz
     version: 0.0.1
-generated: "2025-09-02T22:41:54.442056711Z"
+generated: "2025-09-02T22:50:27.236487287Z"
