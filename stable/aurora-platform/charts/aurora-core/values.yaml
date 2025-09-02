@@ -29,6 +29,9 @@ global:
       targetRevision:
       repository:
 
+  # azure or aws
+  provider: azure
+    
   # Cluster name for the Application targets.
   cluster: in-cluster
 
@@ -380,7 +383,6 @@ components:
       nameservers: []
 
     aadPodIdentity:
-      enabled: true
       name: cert-manager
       azureManagedIdentity: {}
         # clientId: ""
@@ -462,7 +464,7 @@ components:
 
     eni:
       awsReleaseExcessIPs: false
-      awsEnablePrefixDelegation: false
+      awsEnablePrefixDelegation: true
       subnetIDsFilter: []
       subnetTagsFilter: []
 
@@ -1846,7 +1848,6 @@ components:
       # resourceGroupName:
 
     aadPodIdentity:
-      enabled: true
       name: velero
       azureManagedIdentity: {}
         # clientId: ""
@@ -1858,6 +1859,11 @@ components:
           # registry: docker.io
           repository: velero/velero-plugin-for-microsoft-azure
           tag: "v1.7.1"
+      aws:
+        image:
+          # registry: docker.io
+          repository: velero/velero-plugin-for-aws
+          tag: "v1.12.1"      
 
     kubectl:
       image:

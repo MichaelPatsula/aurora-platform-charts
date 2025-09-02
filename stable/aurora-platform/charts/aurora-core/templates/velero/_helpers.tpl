@@ -46,15 +46,44 @@ The image section for velero plugin azure.
 {{- end }}
 {{- end }}
 
-
 {{/*
 The image section for velero plugins.
 */}}
-{{- define "velero.imageFunction" -}}
-{{- if (and .image.registry .image.repository .image.tag) }}
-{{- printf "%s/%s:%s" .image.registry .image.repository .image.tag }}
-{{- else if (and .image.repository .image.tag) }}
-{{- printf "%s/%s:%s" "docker.io" .image.repository .image.tag }}
+{{- define "velero.plugin.image" -}}
+  {{- $provider := .Values.global.provider -}}
+
+  {{- $plugin := index .Values.components.velero.plugins $provider | default dict -}}
+  {{- $image := $plugin.image | default dict -}}
+
+  {{- $registry := coalesce $image.registry .Values.global.container.registry "docker.io" -}}
+  {{- $repository := required (printf "Missing velero.plugin.image.repository for provider '%s'" $provider) $image.repository -}}
+  {{- $tag := default "latest" $image.tag -}}
+
+  {{- printf "%s/%s:%s" $registry $repository $tag -}}
+{{- end }}
+
+
+{{/*
+backupStorageLocation config
+*/}}
+{{- define "velero.backupStorageLocation.config" -}}
+{{- if eq .Values.global.provider "azure" }}
+resourceGroup: {{ required "velero.backupStorage.resourceGroupName is required" .Values.components.velero.backupStorage.resourceGroupName | quote }}
+storageAccount: {{ required "velero.backupStorage.storageAccountName is required" .Values.components.velero.backupStorage.storageAccountName | quote }}
+subscriptionId: {{ required "velero.backupStorage.subscriptionId is required" .Values.components.velero.backupStorage.subscriptionId | quote }}
+{{- else if eq .Values.global.provider "aws" }}
+region: ca-central-1
 {{- end }}
 {{- end }}
 
+{{/*
+snapshotLocation config
+*/}}
+{{- define "velero.snapshotLocation.config" -}}
+{{- if eq .Values.global.provider "azure" }}
+resourceGroup: {{ required "velero.volumeSnapshot.resourceGroupName is required" .Values.components.velero.volumeSnapshot.resourceGroupName | quote }}
+incremental: true
+{{- else if eq .Values.global.provider "aws" }}
+region: ca-central-1
+{{- end }}
+{{- end }}
