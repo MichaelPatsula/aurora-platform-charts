@@ -32,7 +32,6 @@ global:
   # azure or aws
   provider: azure 
 
-
   # Cluster name for the Application targets.
   cluster: in-cluster
 
